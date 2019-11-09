@@ -1,0 +1,5 @@
+data/gcal/
+data/domains/
+!data/domains/.gitignore
+!data/gcal/.gitignore
+
