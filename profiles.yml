@@ -1,0 +1,16 @@
+# For more information on how to configure this file, please see:
+# https://docs.getdbt.com/docs/profile
+
+default:
+  outputs:
+    analysis:
+      type: postgres
+      host: "{{env_var('POSTGRES_HOST')}}"
+      user: "{{env_var('POSTGRES_USER')}}"
+      pass: "{{env_var('POSTGRES_PASSWORD')}}"
+      port: 5432
+      dbname: KWV
+      schema: analysis
+      threads: 8
+      keepalives_idle: 0 # default 0, indicating the system default
+  target: analysis
