@@ -2,7 +2,7 @@
 # Name your package! Package names should contain only lowercase characters
 # and underscores. A good package name should reflect your organization's
 # name or the intended use of these models
-name: 'my_new_package'
+name: 'knowledge_worker_valuator'
 version: '1.0'
 
 # This setting configures which "profile" dbt uses for this project. Profiles contain
@@ -31,7 +31,11 @@ clean-targets:         # directories to be removed by `dbt clean`
 # as views (the default). These settings can be overridden in the individual model files
 # using the `{{ config(...) }}` macro.
 models:
-  my_new_package:
+  knowledge_worker_valuator:
       # Applies to all files under models/example/
-      example:
+      analysis:
           materialized: view
+seeds:
+  knowledge_worker_valuator:
+    enabled: true
+    schema: lake

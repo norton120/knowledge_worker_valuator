@@ -13,7 +13,6 @@ services:
     command: ["python3","extract_load.py"]
     depends_on:
       - database
-
   kwv:
     image: kwv
     build:
