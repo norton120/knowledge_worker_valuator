@@ -2,38 +2,34 @@ version: '3.5'
 services:
   database:
     image: postgres:9.6
-    env_file:
-      - ./.env
+    env_file: .env
 
   extract_load:
     image: extract_load
     build:
-    context: . 
-    dockerfile: ./dockerfiles/el.dockerfile
-  env_file:
-    - ./.env
-  depends_on:
-    - database
+      context: . 
+      dockerfile: ./dockerfiles/el.dockerfile
+    env_file: .env
+    command: ["python3","extract_load.py"]
+    depends_on:
+      - database
 
   kwv:
     image: kwv
     build:
       context: .
       dockerfile: ./dockerfiles/kwv.dockerfile
-    env_file:
-      - ./.env
+    env_file: .env
+    command: ["tail","-f","/dev/null"]
     depends_on:
       - database
 
-  dash:
-    image: dash
-    build:
-      context: .
-      dockerfile: ./dockerfiles/dash.dockerfile
-    env_file:
-      - ./.env
-    depends_on:
-      - kwv
-    ports:
-      - "8050:8050"
+#  dash:
+#    image: dash
+#    build:
+#      context: .
+#      dockerfile: ./dockerfiles/dash.dockerfile
+#    env_file: .env
+#    ports:
+#      - "8050:8050"
 

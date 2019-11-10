@@ -5,5 +5,5 @@ COPY ./extract_load /app
 WORKDIR /app
 COPY ./data /app_data
 RUN apt-get update && \
-pip3 install -r requirements.txt && \
-python3 extract_load.py 
+pip3 install -r requirements.txt 
+

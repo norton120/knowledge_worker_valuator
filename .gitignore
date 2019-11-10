@@ -1,3 +1,4 @@
+.Ds_Store
 data/gcal/
 data/domains/
 !data/domains/.gitignore
