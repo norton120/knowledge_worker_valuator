@@ -38,4 +38,3 @@ models:
 seeds:
   knowledge_worker_valuator:
     enabled: true
-    schema: lake

@@ -9,7 +9,7 @@ default:
       pass: "{{env_var('POSTGRES_PASSWORD')}}"
       port: 5432
       dbname: "{{env_var('POSTGRES_DB')}}"
-      schema: analysis
+      schema: lake
       threads: 8
       keepalives_idle: 0 # default 0, indicating the system default
   target: analysis

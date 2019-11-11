@@ -21,9 +21,7 @@ services:
       context: .
       dockerfile: ./dockerfiles/kwv.dockerfile
     env_file: .env
-    command: [  "sleep","20","&&",
-                "dbt","seed","--full-refresh","--profiles-dir","./","&&",
-                "dbt","run","--profiles-dir","./"]
+    command: ['./scripts/seed_and_run.sh']  
     depends_on:
       - database
 

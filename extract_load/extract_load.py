@@ -11,8 +11,8 @@ class Source:
 
 class PrepperLoader:
 
-    SOURCES= (Source(name='gcals',filepath="/app_data/domains/"),
-              Source(name='web_domains',filepath="/app_data/gcal/"),)
+    SOURCES= (Source(name='web_domains',filepath="/app_data/domains/"),
+              Source(name='gcals',filepath="/app_data/gcal/"),)
 
     def __init__(self):
         PG_USER, PG_PASSWORD, PG_DATABASE = os.environ['POSTGRES_USER'], os.environ["POSTGRES_PASSWORD"], os.environ["POSTGRES_DB"]
