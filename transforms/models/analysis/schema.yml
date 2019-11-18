@@ -19,5 +19,55 @@ models:
           tests:
               - not_null
               - relationships:
-                  to: ref('knowledge_worker_values')
+                  to: ref('complete_knowledge_worker_values')
                   field: value_key
+
+  - name: valued_domains
+    description: the daily record value for each domain
+    columns:
+        - name: domain_date
+          description: day the domain was visited.
+          tests:
+              - not_null
+
+        - name: duration
+          description: length of the event in seconds
+          tests:
+              - not_null
+
+        - name: kw_value_key
+          description: the knowledge worker value key for the event 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('complete_knowledge_worker_values')
+                  field: value_key
+
+  - name: daily_aggregates
+    description: the daily aggregated value for each KW value type.
+    columns:
+        - name: date
+          description: date the total is aggregated for.
+          tests:
+              - not_null
+
+        - name: duration
+          description: total time invested in the given KW value for the given date, in seconds
+          tests:
+              - not_null
+
+        - name: kw_value_key
+          description: the knowledge worker value key for the event 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('complete_knowledge_worker_values')
+                  field: value_key
+
+        - name: kw_value_name
+          description: the knowledge worker value name for the event 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('complete_knowledge_worker_values')
+                  field: value_title

@@ -12,7 +12,7 @@ services:
       context: . 
       dockerfile: ./dockerfiles/el.dockerfile
     env_file: .env
-    command: ["python3","extract_load.py"]
+    command: sh -c "sleep 10 && python3 extract_load.py"
     depends_on:
       - database
   kwv:
@@ -23,7 +23,7 @@ services:
     env_file: .env
     volumes:
       - ./transforms:/app
-    command: ["tail", "-f", "/dev/null"]  #./scripts/seed_and_run.sh  
+    command: sh -c "sleep 10 && tail -f /dev/null"    
     depends_on:
       - database
 

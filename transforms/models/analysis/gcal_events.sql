@@ -1,7 +1,7 @@
 WITH 
 newest_record_date AS (
     SELECT
-	MAX(TO_DATE(REGEXP_REPLACE(filename,'\D','','g'),'YYYYMMDD')) AS MAX_DATE
+	MAX({{extract_etl_date('filename')}}) AS MAX_DATE
     FROM
         lake.gcals
 )
@@ -22,7 +22,7 @@ newest_record_date AS (
     FROM 
         lake.gcals
     WHERE
-	TO_DATE(REGEXP_REPLACE(filename,'\D','','g'),'YYYYMMDD')  = (SELECT MAX_DATE FROM newest_record_date)
+	{{extract_etl_date('filename')}}  = (SELECT MAX_DATE FROM newest_record_date)
 )
 ,merged_durations AS (
     SELECT
@@ -35,6 +35,7 @@ newest_record_date AS (
         END) AS kw_value_key
     FROM
         partial_durations
+    WHERE event_date >= '2019-11-04'::date
     GROUP BY 1,2
 )
 SELECT
