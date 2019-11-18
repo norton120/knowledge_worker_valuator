@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: gcal_events
+    description: the most recent record for each event in google calendar
+    columns:
+        - name: event_date
+          description: day the event occurred. In the case of events spanning over midnight, the day it started.
+          tests:
+              - not_null
+              
+        - name: duration
+          description: length of the event in seconds
+          tests:
+              - not_null
+
+        - name: kw_value_key
+          description: the knowledge worker value key for the event 
+          tests:
+              - not_null
+              - relationships:
+                  to: ref('knowledge_worker_values')
+                  field: value_key

@@ -34,7 +34,7 @@ models:
   knowledge_worker_valuator:
       # Applies to all files under models/example/
       analysis:
-          materialized: view
+          materialized: table
 seeds:
   knowledge_worker_valuator:
     enabled: true

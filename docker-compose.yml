@@ -21,7 +21,9 @@ services:
       context: .
       dockerfile: ./dockerfiles/kwv.dockerfile
     env_file: .env
-    command: ['./scripts/seed_and_run.sh']  
+    volumes:
+      - ./transforms:/app
+    command: ["tail", "-f", "/dev/null"]  #./scripts/seed_and_run.sh  
     depends_on:
       - database
 
